@@ -14,7 +14,6 @@ This repository is organized to showcase the work and assignments I've completed
 
 - `module01/`: [React. Components]
 
-
 ## Getting Started
 
 To explore my coursework, simply navigate through the repository. Each module or task may contain code, documentation, and additional resources relevant to that specific assignment.
