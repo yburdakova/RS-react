@@ -23,7 +23,7 @@ class App extends Component<AppProps> {
   onSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     localStorage.setItem('searchRequest', this.state.searchValue);
-    this.fetchResults(this.state.searchValue); // Вызывайте fetchResults при отправке формы
+    this.fetchResults(this.state.searchValue); 
   };
 
   componentDidMount() {
