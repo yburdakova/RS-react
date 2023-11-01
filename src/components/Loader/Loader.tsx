@@ -1,14 +1,11 @@
-import { Component } from 'react';
-import './Loader.module.css';
+import styles from './Loader.module.css';
 
-class Loader extends Component {
-  render() {
-    return (
-      <div className="loader">
-        <div className="loader-inner" />
-      </div>
-    );
-  }
+function Loader() {
+  return (
+    <div className={styles.loader}>
+      <div className={styles.loader_inner} />
+    </div>
+  );
 }
 
-export default Loader;
+export default Loader

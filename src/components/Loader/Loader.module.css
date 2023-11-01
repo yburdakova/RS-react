@@ -10,7 +10,7 @@
   height: 100%;
 }
 
-.loader-inner {
+.loader_inner {
   border: 6px solid #f3f3f3;
   border-top: 6px solid #61dafbaa;
   border-radius: 50%;

@@ -1,4 +1,4 @@
-.search-bar {
+.search_bar {
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -8,7 +8,7 @@
   margin: 20px 0;
 }
 
-.search-input {
+.search_input {
   flex: 1;
   border: none;
   outline: none;
@@ -17,7 +17,7 @@
   font-size: 1.2rem;
 }
 
-.search-button {
+.search_button {
   background-color: transparent;
   border: none;
   border-radius: 50px;
@@ -29,9 +29,9 @@
 }
 
 /* Hover effect for the button */
-.search-button:hover {
+.search_button:hover {
   transform: scale(1.4);
 }
-.search-button:active {
+.search_button:active {
   border: none;
 }

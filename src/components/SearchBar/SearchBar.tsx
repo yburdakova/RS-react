@@ -1,27 +1,22 @@
-import { Component } from 'react';
-import './SearchBar.module.css';
+import styles from './SearchBar.module.css';
 import { SearchBarProps } from '../../constants/interfaces';
 
-class SearchBar extends Component<SearchBarProps> {
-  render() {
-    const { onSubmit, onChange, value } = this.props;
-
-    return (
-      <form className="search-bar" onSubmit={onSubmit}>
+function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
+  return (
+    <form className={styles.search_bar} onSubmit={onSubmit}>
         <input
           id="search"
           type="text"
           placeholder="Search..."
           onChange={onChange}
           value={value}
-          className="search-input"
+          className={styles.search_input}
         />
-        <button className="search-button" type="submit">
+        <button className={styles.search_button} type="submit">
           &#x1F50D;
         </button>
       </form>
-    );
-  }
+  )
 }
 
-export default SearchBar;
+export default SearchBar
