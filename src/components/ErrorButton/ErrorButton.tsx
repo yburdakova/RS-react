@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './ErrorButton.css';
+import './ErrorButton.module.css';
 import { ErrorButtonProps } from '../../constants/interfaces';
 
 class ErrorButton extends Component<ErrorButtonProps> {

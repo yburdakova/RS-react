@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './SearchBar.css';
+import './SearchBar.module.css';
 import { SearchBarProps } from '../../constants/interfaces';
 
 class SearchBar extends Component<SearchBarProps> {

@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './InfoItem.css';
+import './InfoItem.module.css';
 import { InfoItemProps } from '../../constants/interfaces';
 
 class InfoItem extends Component<InfoItemProps> {
