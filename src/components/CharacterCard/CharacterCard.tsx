@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './CharacterCard.css';
+import './CharacterCard.module.css';
 import { CharacterProps } from '../../constants/interfaces';
 import InfoItem from '../InfoItem/InfoItem';
 
