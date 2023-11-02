@@ -3,7 +3,8 @@ import { SearchBarProps } from '../../constants/interfaces';
 
 function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
   return (
-    <form className={styles.search_bar} onSubmit={onSubmit}>
+    <search role='search' className={styles.search_container}>
+      <form  className={styles.search_bar} onSubmit={onSubmit}>
         <input
           id="search"
           type="text"
@@ -16,6 +17,7 @@ function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
           &#x1F50D;
         </button>
       </form>
+    </search>
   )
 }
 
