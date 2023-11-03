@@ -1,27 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, SearchBar, CharacterCard, ErrorButton } from './components';
+import { Loader, SearchBar, ErrorButton } from './components';
 import { AppProps, CharacterProps } from './constants/interfaces';
 import './App.css';
+import { fetchCharacters } from './api/api';
+import SelectBar from './components/SelectBar/SelectBar';
 
 const App: React.FC<AppProps> = () => {
   const savedSearchRequest = localStorage.getItem('searchRequest');
+  const savedLimitRequest = localStorage.getItem('selectedLimit');
 
   const [data, setData] = useState<CharacterProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState(savedSearchRequest || '');
   const [searchRequest] = useState(savedSearchRequest || '');
   const [isError, setIsError] = useState(false);
+  const [selectedLimit, setSelectedLimit] = useState (savedLimitRequest || 10); 
 
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
+  const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedLimit(parseInt(e.target.value))
+  }
+
   const onSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     localStorage.setItem('searchRequest', searchValue);
     fetchResults(searchValue);
   };
+
+  useEffect(() => {
+    localStorage.setItem('searchRequest', searchValue);
+    localStorage.setItem('selectedLimit', selectedLimit.toString());
+  },[searchValue, selectedLimit])
 
   const errorCalling = () => {
     setIsError(true);
@@ -35,22 +48,18 @@ const App: React.FC<AppProps> = () => {
 
   const fetchResults = (searchTerm: string) => {
     setLoading(true);
-
-
-    fetch(`https://swapi.dev/api/people/?search=${searchTerm}`)
-      .then((result) => result.json())
-      .then((data) => {
-        setData(data.results);
+  
+    fetchCharacters(searchTerm)
+      .then((results) => {
+        setData(results);
         setLoading(false);
-
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
         setLoading(false);
-
       });
   };
-
+  
   useEffect(() => {
     fetchResults(searchRequest);
   }, [searchRequest]);
@@ -62,34 +71,38 @@ const App: React.FC<AppProps> = () => {
       ) : (
         <div className="container">
           <section id="top-section">
-            <SearchBar
-              onChange={onSearchChange}
-              onSubmit={onSearchSubmit}
-              value={searchValue}
+            <div className="search_container">
+              <SearchBar
+                onChange={onSearchChange}
+                onSubmit={onSearchSubmit}
+                value={searchValue}
+              />
+              <ErrorButton onClick={errorCalling} />
+            </div>
+            <SelectBar 
+              onChange={onSelectChange} 
+              value={selectedLimit}
             />
-            <ErrorButton onClick={errorCalling} />
           </section>
-          {data.length > 0 ? (
-            <section id="main-section" className="cards-container">
-              {data.map((item, index) => (
-                <CharacterCard
-                  key={index}
-                  name={item.name}
-                  height={item.height}
-                  mass={item.mass}
-                  birth_year={item.birth_year}
-                />
-              ))}
-            </section>
-          ) : (
-            <h2 className="noresult">
-              Unfortunately, your search returned no results
-            </h2>
-          )}
+          <section id="main-section">
+            {data.length > 0 ? (
+              <ul>
+                {data.map((item, index) => (
+                  <li key={index}>{item.name}</li>
+                ))}
+              </ul>
+            ) : (
+              <h2 className="noresult">
+                Unfortunately, your search returned no results
+              </h2>
+            )}
+          </section>
+          
         </div>
       )}
     </>
   );
-};
+}
+
 
 export default App;

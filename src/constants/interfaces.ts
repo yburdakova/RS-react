@@ -53,6 +53,12 @@ export interface SearchBarProps {
   value: string;
 }
 
+export interface SelectBarProps {
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  value: string | number;
+}
+
+
 export interface InfoItemProps {
   title: string;
   infodata: string | undefined;
