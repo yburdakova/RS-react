@@ -1,19 +1,19 @@
-import styles from './SearchBar.module.css';
+import './SearchBar.css'
 import { SearchBarProps } from '../../constants/interfaces';
 
 function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
   return (
-    <search role='search' className={styles.container}>
-      <form  className={styles.search_bar} onSubmit={onSubmit}>
+    <search role='search' className="search-container">
+      <form  className="search_bar" onSubmit={onSubmit}>
         <input
           id="search"
           type="text"
           placeholder="Search..."
           onChange={onChange}
           value={value}
-          className={styles.search_input}
+          className="search_input"
         />
-        <button className={styles.search_button} type="submit">
+        <button className="search_button" type="submit">
           &#x1F50D;
         </button>
       </form>

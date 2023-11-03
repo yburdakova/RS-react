@@ -1,9 +1,9 @@
-import styles from './ErrorButton.module.css';
+import './ErrorButton.css'
 import { ErrorButtonProps } from '../../constants/interfaces';
 
 function ErrorButton({ onClick }:ErrorButtonProps) {
   return (
-    <button className={styles.error_button} type="button" onClick={onClick}>
+    <button className="error_button" type="button" onClick={onClick}>
         ERROR
       </button>
   )
