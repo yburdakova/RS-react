@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, SearchBar, ErrorButton } from './components';
+import { Loader, SearchBar, ErrorButton, SelectBar, CharacterList } from './components';
 import { AppProps, CharacterProps } from './constants/interfaces';
 import './App.css';
 import { fetchCharacters } from './api/api';
-import SelectBar from './components/SelectBar/SelectBar';
 
-const App: React.FC<AppProps> = () => {
+const App: React.FC <AppProps> = () => {
   const savedSearchRequest = localStorage.getItem('searchRequest');
   const savedLimitRequest = localStorage.getItem('selectedLimit');
 
@@ -32,9 +31,9 @@ const App: React.FC<AppProps> = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('searchRequest', searchValue);
     localStorage.setItem('selectedLimit', selectedLimit.toString());
-  },[searchValue, selectedLimit])
+    fetchResults(searchValue);
+  },[selectedLimit])
 
   const errorCalling = () => {
     setIsError(true);
@@ -85,17 +84,10 @@ const App: React.FC<AppProps> = () => {
             />
           </section>
           <section id="main-section">
-            {data.length > 0 ? (
-              <ul>
-                {data.map((item, index) => (
-                  <li key={index}>{item.name}</li>
-                ))}
-              </ul>
-            ) : (
-              <h2 className="noresult">
-                Unfortunately, your search returned no results
-              </h2>
-            )}
+            <div id="sidebar">
+              {data.length > 0 ? <CharacterList data={data}/> : <h2 className="noresult">No results</h2>}
+            </div>
+            <div id="detail"></div>
           </section>
           
         </div>

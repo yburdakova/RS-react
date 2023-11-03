@@ -40,7 +40,7 @@ export interface CharacterProps {
 }
 
 export interface AppProps {
-  data: string[];
+  data: CharacterProps[];
   loading: boolean;
   searchValue: string;
   searchRequest: string;
