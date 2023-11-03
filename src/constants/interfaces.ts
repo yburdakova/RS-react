@@ -63,3 +63,9 @@ export interface InfoItemProps {
   title: string;
   infodata: string | undefined;
 }
+
+export interface RouteError {
+  status?: number;
+  statusText?: string;
+  message?: string;
+}
