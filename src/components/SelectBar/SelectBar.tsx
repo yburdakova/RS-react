@@ -4,6 +4,7 @@ import { SelectBarProps } from '../../constants/interfaces';
 const limitOptions = [10, 20, 50, 100]; 
 
 function SelectBar({onChange, value}: SelectBarProps) {
+    
     return (
         <div className='select-container'>
             <h3 className="">Number of items shown per page: </h3>

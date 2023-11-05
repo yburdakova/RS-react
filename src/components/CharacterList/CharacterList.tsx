@@ -16,9 +16,7 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
     const [peopleData, setPeopleData] = useState<CharacterProps>({});
 
     const handleGetCardInfo = (peopleUrl: string) => {
-        console.log(peopleUrl)
         setLoading(true);
-        
         fetchPeople(peopleUrl)
         .then((results) => {
             setPeopleData(results);

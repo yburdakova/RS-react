@@ -3,7 +3,6 @@ import { CharacterProps } from '../../constants/interfaces'
 
 function CharactersInfo({ data  } :  { data: CharacterProps[][] }) {
 
-    console.log (data.length)
     return (
         <section id="main-section">
             <div id="pages">

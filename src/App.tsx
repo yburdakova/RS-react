@@ -51,6 +51,7 @@ const App: React.FC<AppProps> = () => {
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLimit(e.target.value);
+    navigate('/');
   };
 
   const onSearchSubmit = (e: React.FormEvent) => {
