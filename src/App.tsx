@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, SearchBar, ErrorButton, SelectBar, CharacterList } from './components';
+import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterList } from './components';
 import { AppProps, CharacterProps } from './constants/interfaces';
 import './App.css';
 import { fetchCharacters , chunkArray} from './api/api';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 const App: React.FC<AppProps> = () => {
+
   const savedSearchRequest = localStorage.getItem('searchRequest');
   const savedLimitRequest = localStorage.getItem('selectedLimit');
+  const navigate = useNavigate();
 
   const [data, setData] = useState<CharacterProps[]>([]);
   const [loading, setLoading] = useState(true);
@@ -17,8 +20,6 @@ const App: React.FC<AppProps> = () => {
   const [initialLoad, setInitialLoad] = useState(true);
   const [infoData, setInfoData] = useState<CharacterProps[][]>([])
   
-
-
   useEffect(() => {  
     if (!initialLoad) {
       fetchResults(searchRequest);
@@ -56,6 +57,7 @@ const App: React.FC<AppProps> = () => {
   const onSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSearchRequest(searchValue);
+    navigate('/');
   };
 
   const fetchResults = (searchTerm: string) => {
@@ -134,23 +136,15 @@ useEffect(() => {
               value={selectedLimit}
             />
           </section>
-          <section id="main-section">
-            <div id="pages">
-              <div className="pages-title">Pages:</div>
-              {infoData.map((_, index) => (
-                <a href="#" className="page-link" key={`page-${index}`}>
-                  {index + 1}
-                </a>
-              ))}
-            </div>
-            <div id="data-info">
-              <div id="sidebar">
-                {data.length > 0 ? <CharacterList data={data}/> : <h2 className="noresult">No results</h2>}
-              </div>
-              <div id="detail"></div>
-            </div>
-          </section>
-          
+          {infoData.length > 0 
+            ?  <Routes>
+                  <Route path="/" element={<CharactersInfo data={infoData}/>}>
+                    <Route index element={<CharacterList data={infoData} first/>}/>
+                    <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}/>
+                  </Route>
+              </Routes>
+            : <h2 className="noresult">No results</h2>
+          }
         </div>
       )}
     </>

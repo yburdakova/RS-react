@@ -5,6 +5,7 @@ import InfoItem from './InfoItem/InfoItem';
 import ErrorButton from './ErrorButton/ErrorButton';
 import SelectBar from './SelectBar/SelectBar';
 import CharacterList from './CharacterList/CharacterList';
+import CharactersInfo from './CharactersInfo/CharactersInfo';
 
 export { 
     Loader, 
@@ -13,5 +14,6 @@ export {
     InfoItem, 
     ErrorButton, 
     SelectBar, 
-    CharacterList
+    CharacterList,
+    CharactersInfo
 };
