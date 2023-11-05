@@ -12,7 +12,7 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
     const infoForPage: CharacterProps[] = data[pageNumber];
 
     const [peopleUrl, setPeopleUrl] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [peopleData, setPeopleData] = useState<CharacterProps>({});
 
     const handleGetCardInfo = (peopleUrl: string) => {
@@ -30,9 +30,16 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
         });
     }
 
-    useEffect(()=>{
-        handleGetCardInfo(peopleUrl)
-    },[peopleUrl])
+    const handleClickListItem = (itemUrl: string) => {
+        setLoading(true); 
+        setPeopleUrl(itemUrl);
+    }
+
+    useEffect(() => {
+        if (peopleUrl) {
+            handleGetCardInfo(peopleUrl);
+        }
+    }, [peopleUrl]);
 
     return (
         <div id="data-info">
@@ -40,7 +47,7 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
                 <nav>
                     <ul>
                         {infoForPage.map((item, index) => (
-                            <li key={index} onClick={() => item.url && setPeopleUrl(item.url)}>
+                            <li key={index} onClick={() => item.url && handleClickListItem(item.url)}>
                                 <a href="#">
                                     {item.name}
                                 </a>
