@@ -20,6 +20,13 @@ export const fetchCharacters = async (searchTerm: string) => {
   return results;
 };
 
+export const fetchPeople = async (url:string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+    
+}
+
 
 export const chunkArray = (data: CharacterProps[], selectedLimit: string) => {
   console.log(data.length);

@@ -13,13 +13,8 @@ function CharactersInfo({ data  } :  { data: CharacterProps[][] }) {
                         { index +1 }
                     </Link>
                 ))}
-                </div>
-                <div id="data-info">
-                <div id="sidebar">
-                    <Outlet/>
-                </div>
-                <div id="detail"></div>
             </div>
+            <Outlet/>
         </section>
     )
 }

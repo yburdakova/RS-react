@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterList } from './components';
+import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterList, CharacterCard } from './components';
 import { AppProps, CharacterProps } from './constants/interfaces';
 import './App.css';
 import { fetchCharacters , chunkArray} from './api/api';
@@ -140,7 +140,9 @@ useEffect(() => {
             ?  <Routes>
                   <Route path="/" element={<CharactersInfo data={infoData}/>}>
                     <Route index element={<CharacterList data={infoData} first/>}/>
-                    <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}/>
+                    <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}>
+                      <Route path="people/:id" element={<CharacterCard data={infoData}/>}/>
+                    </Route>
                   </Route>
               </Routes>
             : <h2 className="noresult">No results</h2>
