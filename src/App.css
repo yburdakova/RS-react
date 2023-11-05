@@ -22,12 +22,30 @@ flex-direction: column;
   width: 100%;
   gap: 1rem;
   flex-direction: column;
-  margin-bottom: 2rem;
 }
+
 #main-section{
+  width: 100%;
+}
+
+#pages{
+display: flex;
+justify-content: start;
+margin-top: 1rem ;
+margin-bottom: 2rem ;
+gap: 1rem
+}
+
+.page-link::before{
+content: '[';
+}
+.page-link::after{
+  content: ']';
+  }
+
+#data-info{
   display: flex;
   width: 100%;
-  
 }
 
 #sidebar {
@@ -37,15 +55,11 @@ flex-direction: column;
   flex-direction: column;
 }
 
-
-
-
 #detail {
   flex: 1;
   padding: 2rem 4rem;
   width: 100%;
 }
-
 
 .search_container{
   display: flex;
