@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterList, CharacterCard } from './components';
+import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterList} from './components';
 import { AppProps, CharacterProps } from './constants/interfaces';
 import './App.css';
 import { fetchCharacters , chunkArray} from './api/api';
@@ -11,7 +11,6 @@ const App: React.FC<AppProps> = () => {
   const savedLimitRequest = localStorage.getItem('selectedLimit');
   const navigate = useNavigate();
 
-  const [data, setData] = useState<CharacterProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState(savedSearchRequest || '');
   const [searchRequest, setSearchRequest] = useState(savedSearchRequest || '');
@@ -66,7 +65,6 @@ const App: React.FC<AppProps> = () => {
     
     fetchCharacters(searchTerm)
       .then((results) => {
-        setData(results);
         const chunkedData = chunkArray(results, selectedLimit);
         setInfoData(chunkedData);
         setLoading(false);
@@ -76,45 +74,7 @@ const App: React.FC<AppProps> = () => {
         setLoading(false);
       });
   };
-  
 
-// TEST STATE
-
-useEffect(() => {
-  console.log('searchRequest:', searchRequest);
-  console.log('savedSearchRequest:', savedSearchRequest);
-  console.log('savedLimitRequest:', savedLimitRequest);
-}, [searchRequest]);
-
-useEffect(() => {
-  console.log('data:', data);
-}, [data]);
-
-useEffect(() => {
-  console.log('loading:', loading);
-}, [loading]);
-
-useEffect(() => {
-  console.log('searchValue:', searchValue);
-}, [searchValue]);
-
-useEffect(() => {
-  console.log('isError:', isError);
-}, [isError]);
-
-useEffect(() => {
-  console.log('selectedLimit:', selectedLimit);
-}, [selectedLimit]);
-
-useEffect(() => {
-  console.log('initialLoad:', initialLoad);
-}, [initialLoad]);
-
-useEffect(() => {
-  console.log('infoData:', infoData);
-}, [infoData]);
-
-// TEST STATE
 
   return (
     <>
@@ -141,7 +101,7 @@ useEffect(() => {
                   <Route path="/" element={<CharactersInfo data={infoData}/>}>
                     <Route index element={<CharacterList data={infoData} first/>}/>
                     <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}>
-                      <Route path="people/:id" element={<CharacterCard data={infoData}/>}/>
+                      
                     </Route>
                   </Route>
               </Routes>

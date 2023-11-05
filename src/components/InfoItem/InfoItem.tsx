@@ -1,4 +1,4 @@
-import './InfoItem.module.css';
+import './InfoItem.css';
 import { InfoItemProps } from '../../constants/interfaces';
 
 

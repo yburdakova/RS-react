@@ -1,15 +1,33 @@
-import styles from './CharacterCard.module.css';
+import './CharacterCard.css'
 import { CharacterProps } from '../../constants/interfaces';
 import InfoItem from '../InfoItem/InfoItem';
+import { useEffect, useState } from 'react';
 
-function CharacterCard({ name, height, mass, birth_year } : CharacterProps) {
+function CharacterCard({ data } : { data: CharacterProps }) {
+
+  const [showCard, setShowCard] = useState(false)
+
+  const handleCloseCard = () => {
+    setShowCard(false)
+  }
+
+  useEffect(()=>{
+    data.name && setShowCard(true)
+  },[])
   
   return (
-    <div className={styles.card}>
-      <h2 className="title">{name}</h2>
-      <InfoItem title="Year of birth" infodata={birth_year} />
-      <InfoItem title="Height" infodata={height} />
-      <InfoItem title="Weigh" infodata={mass} />
+    <div className="card-container">
+      {
+        showCard
+        ? <div className="card-info">
+            <button className="close-card-button" onClick={handleCloseCard}>&#10005;</button>
+            <h2 className="title">{data.name}</h2>
+            <InfoItem title="Year of birth" infodata={data.birth_year} />
+            <InfoItem title="Height" infodata={data.height} />
+            <InfoItem title="Weigh" infodata={data.mass} />
+          </div>
+        : ""
+      }
     </div>
   );
 }

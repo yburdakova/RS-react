@@ -9,13 +9,13 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
 
     const { id }  = useParams<"id">();
     const pageNumber = first ? 0 : id ? parseInt(id, 10) - 1 : 0; 
-    const infoForPage = data[pageNumber];
+    const infoForPage: CharacterProps[] = data[pageNumber];
 
     const [peopleUrl, setPeopleUrl] = useState('');
     const [loading, setLoading] = useState(true);
-    const [peopleData, setPeopleData] = useState([]);
+    const [peopleData, setPeopleData] = useState<CharacterProps>({});
 
-    const handleGetCardInfo = (peopleUrl) => {
+    const handleGetCardInfo = (peopleUrl: string) => {
         console.log(peopleUrl)
         setLoading(true);
         
@@ -40,8 +40,8 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
                 <nav>
                     <ul>
                         {infoForPage.map((item, index) => (
-                            <li key={index} onClick={() => setPeopleUrl(item.url)}>
-                                <a href="#" >
+                            <li key={index} onClick={() => item.url && setPeopleUrl(item.url)}>
+                                <a href="#">
                                     {item.name}
                                 </a>
                             </li>
@@ -50,7 +50,7 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
                 </nav>
             </div>
             <div id="detail">
-                {loading? <Loader/> : <CharacterCard  name={peopleData.name} height={peopleData.heigh} mass={peopleData.mass} birth_year={peopleData.birth_year}/>}
+                {loading? <Loader/> : <CharacterCard  data={peopleData} />}
             </div>
         </div>
         
@@ -58,3 +58,8 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
 }
 
 export default CharacterList
+
+{/*
+<Route path="/people/:id" element={<CharacterCard data={infoData}/>}/> 
+Link to={`/people/${index+1}`}
+*/}

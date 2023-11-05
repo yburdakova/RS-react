@@ -21,7 +21,7 @@ export const InitialProps = {
 };
 
 export interface CharacterProps {
-  name: string;
+  name?: string;
   height?: string;
   mass?: string;
   hair_color?: string;
