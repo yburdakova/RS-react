@@ -17,13 +17,13 @@ const App: React.FC<AppProps> = () => {
   const [initialLoad, setInitialLoad] = useState(true);
   const [infoData, setInfoData] = useState<CharacterProps[][]>([])
   
-  const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  useEffect(() => {
-    if (initialLoad) {
-      setInitialLoad(false);
+
+  useEffect(() => {  
+    if (!initialLoad) {
       fetchResults(searchRequest);
-      return;
+    } else {
+      setInitialLoad(false);
     }
   }, [initialLoad, searchRequest]);
 
@@ -34,12 +34,6 @@ const App: React.FC<AppProps> = () => {
     }
     
   }, [selectedLimit, savedLimitRequest]);
-
-  useEffect(() => {
-    if (searchRequest !== savedSearchRequest) {
-      fetchResults(searchRequest);
-    }
-  }, [searchRequest, savedSearchRequest]);
 
   useEffect(() => {
     if (isError) {
@@ -66,7 +60,8 @@ const App: React.FC<AppProps> = () => {
 
   const fetchResults = (searchTerm: string) => {
     setLoading(true);
-
+    localStorage.setItem('searchRequest', searchTerm);
+    
     fetchCharacters(searchTerm)
       .then((results) => {
         setData(results);
