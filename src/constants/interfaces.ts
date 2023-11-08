@@ -69,3 +69,21 @@ export interface RouteError {
   statusText?: string;
   message?: string;
 }
+
+export type InitialStateType = {
+  dataInfo: CharacterProps[][];
+  searchRequest: string;
+}
+
+export type Action =
+  | { type: 'SET_DATA_INFO'; payload: CharacterProps[][] }
+  | { type: 'SET_SEARCH_REQUEST'; payload: string };
+
+export type AppContextType = InitialStateType & {
+  dispatch: React.Dispatch<Action>;
+};
+
+export type AppContextProviderProps = {
+  children: ReactNode;
+};
+
