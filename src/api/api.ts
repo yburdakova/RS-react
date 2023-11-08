@@ -29,17 +29,11 @@ export const fetchPeople = async (url:string) => {
 
 
 export const chunkArray = (data: CharacterProps[], selectedLimit: string) => {
-  console.log(data.length);
-  console.log(selectedLimit);
   const result = [];
   const count = +selectedLimit;
   for (let i = 0; i < data.length; i += count) {
       result.push(data.slice(i, i + count));
   }
-
-  const testArr = result.map(subArray => subArray.length);
-
-  console.log(testArr);
 
   return result;
 };

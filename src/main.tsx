@@ -6,9 +6,6 @@ import './index.css';
 import { InitialProps } from './constants/interfaces.ts';
 import { BrowserRouter} from 'react-router-dom';
 
-
-
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary fallback={<p>Something went wrong! Reload the page!</p>}>
