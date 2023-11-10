@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterList} from './components';
-import { AppProps, CharacterProps } from './constants/interfaces';
+import { CharacterProps } from './constants/interfaces';
 import './App.css';
 import { fetchCharacters , chunkArray} from './api/api';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-const App: React.FC<AppProps> = () => {
+const App: React.FC = () => {
 
   const savedSearchRequest = localStorage.getItem('searchRequest');
   const savedLimitRequest = localStorage.getItem('selectedLimit');
