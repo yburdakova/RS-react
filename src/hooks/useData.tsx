@@ -75,6 +75,7 @@ function useData() {
     return {
         loading,
         searchValue,
+        searchRequest,
         selectedLimit,
         infoData,
         errorCalling,

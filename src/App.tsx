@@ -3,12 +3,14 @@ import { Loader, SearchBar, ErrorButton, SelectBar, CharactersInfo, CharacterLis
 import './App.css';
 import { Routes, Route} from 'react-router-dom';
 import useData from './hooks/useData';
+import { SearchContext } from './context/dataContext';
 
 const App: React.FC = () => {
 
   const {
     loading,
     searchValue,
+    searchRequest,
     selectedLimit,
     infoData,
     errorCalling,
@@ -18,38 +20,40 @@ const App: React.FC = () => {
   } = useData();
 
   return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="container">
-          <section id="top-section">
-            <div className="search_container">
-              <SearchBar
-                onChange={onSearchChange}
-                onSubmit={onSearchSubmit}
-                value={searchValue}
+    <> 
+      <SearchContext.Provider value={{infoData, searchRequest}}>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="container">
+            <section id="top-section">
+              <div className="search_container">
+                <SearchBar
+                  onChange={onSearchChange}
+                  onSubmit={onSearchSubmit}
+                  value={searchValue}
+                />
+                <ErrorButton onClick={errorCalling} />
+              </div>
+              <SelectBar 
+                onChange={onSelectChange} 
+                value={selectedLimit}
               />
-              <ErrorButton onClick={errorCalling} />
-            </div>
-            <SelectBar 
-              onChange={onSelectChange} 
-              value={selectedLimit}
-            />
-          </section>
-          {infoData.length > 0 
-            ?  <Routes>
-                  <Route path="/" element={<CharactersInfo data={infoData}/>}>
-                    <Route index element={<CharacterList data={infoData} first/>}/>
-                    <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}>
-                      
+            </section>
+            {infoData&&infoData.length > 0 
+              ?  <Routes>
+                    <Route path="/" element={<CharactersInfo />}>
+                      <Route index element={<CharacterList first/>}/>
+                      <Route path="/page/:id" element={<CharacterList first={false}/>}>
+                        
+                      </Route>
                     </Route>
-                  </Route>
-              </Routes>
-            : <h2 className="noresult">No results</h2>
-          }
-        </div>
-      )}
+                </Routes>
+              : <h2 className="noresult">No results</h2>
+            }
+          </div>
+        )}
+      </SearchContext.Provider>
     </>
   );
 }

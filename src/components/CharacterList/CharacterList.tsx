@@ -1,15 +1,18 @@
 import { CharacterProps } from "../../constants/interfaces"
 import { useParams } from "react-router-dom";
 import './CharacterList.css'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchPeople } from "../../api/api";
 import { CharacterCard, Loader } from "../";
+import { SearchContext } from "../../context/dataContext";
 
-function CharacterList({ data, first }: { data: CharacterProps[][], first: boolean }) {
+function CharacterList({ first }: {  first: boolean }) {
+
+    const {infoData} = useContext(SearchContext);
 
     const { id }  = useParams<"id">();
     const pageNumber = first ? 0 : id ? parseInt(id, 10) - 1 : 0; 
-    const infoForPage: CharacterProps[] = data[pageNumber];
+    const infoForPage: CharacterProps[] = infoData[pageNumber];
 
     const [peopleUrl, setPeopleUrl] = useState('');
     const [loading, setLoading] = useState(false);

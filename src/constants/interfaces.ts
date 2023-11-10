@@ -81,3 +81,7 @@ export type AppContextProviderProps = {
   children: ReactNode;
 };
 
+export interface SearchContextData {
+  infoData: CharacterProps[][] | [];
+  searchRequest: string; 
+}
