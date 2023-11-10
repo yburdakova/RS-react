@@ -13,12 +13,6 @@ export interface ErrorButtonProps {
   onClick: () => void;
 }
 
-export const InitialProps = {
-  data: [],
-  loading: true,
-  searchValue: '',
-  searchRequest: '',
-};
 
 export interface CharacterProps {
   name?: string;

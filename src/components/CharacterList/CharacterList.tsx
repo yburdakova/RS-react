@@ -29,15 +29,17 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
     }
 
     const handleClickListItem = (itemUrl: string) => {
-        setLoading(true); 
         setPeopleUrl(itemUrl);
     }
 
     useEffect(() => {
         if (peopleUrl) {
+            setLoading(true);
             handleGetCardInfo(peopleUrl);
         }
     }, [peopleUrl]);
+
+    
 
     return (
         <div id="data-info">
@@ -63,8 +65,3 @@ function CharacterList({ data, first }: { data: CharacterProps[][], first: boole
 }
 
 export default CharacterList
-
-{/*
-<Route path="/people/:id" element={<CharacterCard data={infoData}/>}/> 
-Link to={`/people/${index+1}`}
-*/}
