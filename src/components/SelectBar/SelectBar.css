@@ -1,0 +1,13 @@
+.select-container{
+    display: flex;
+    width: 100%;
+    align-items:center
+}
+select {
+    height: 2em;
+}
+h3 {
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}

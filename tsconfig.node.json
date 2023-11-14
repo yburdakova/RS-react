@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "types": ["jest", "node", "@types/testing-library__jest-dom"]
+  },
+  "include": ["vite.config.ts"]
+}
