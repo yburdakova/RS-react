@@ -6,5 +6,3 @@ export const SearchContext = createContext<SearchContextData>({
     searchRequest: '',
 });
 
-
-

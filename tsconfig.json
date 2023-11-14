@@ -15,7 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react-jsxdev", // Измененное значение
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

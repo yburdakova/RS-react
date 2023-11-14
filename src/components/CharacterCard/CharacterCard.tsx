@@ -20,7 +20,7 @@ function CharacterCard({ data } : { data: CharacterProps }) {
       {
         showCard
         ? <div className="card-info">
-            <button className="close-card-button" onClick={handleCloseCard}>&#10005;</button>
+            <button data-testid="close-button" className="close-card-button" onClick={handleCloseCard}>&#10005;</button>
             <h2 className="title">{data.name}</h2>
             <InfoItem title="Year of birth" infodata={data.birth_year} />
             <InfoItem title="Height" infodata={data.height} />

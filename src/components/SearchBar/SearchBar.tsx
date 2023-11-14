@@ -4,7 +4,7 @@ import { SearchBarProps } from '../../constants/interfaces';
 function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
   
   return (
-    <search role='search' className="search-container">
+    <div role='search' className="search-container">
       <form  className="search_bar" onSubmit={onSubmit}>
         <input
           id="search"
@@ -18,7 +18,7 @@ function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
           &#x1F50D;
         </button>
       </form>
-    </search>
+    </div>
   )
 }
 

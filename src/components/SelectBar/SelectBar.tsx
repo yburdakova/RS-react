@@ -7,10 +7,11 @@ function SelectBar({onChange, value}: SelectBarProps) {
     
     return (
         <div className='select-container'>
-            <h3 className="">Number of items shown per page: </h3>
+            <label htmlFor='itemPerPage'>Number of items shown per page: </label>
             <select
                 value={value}
                 onChange={onChange}
+                id='itemPerPage'
                 >
                 {limitOptions.map((option) => (
                     <option key={option} value={option}>
