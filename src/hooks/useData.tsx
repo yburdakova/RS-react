@@ -25,7 +25,7 @@ function useData() {
     }, [initialLoad, searchRequest]);
     
     useEffect(() => {
-        localStorage.setItem('selectedLimit', selectedLimit.toString());
+        localStorage.setItem('selectedLimit', selectedLimit);
         if (selectedLimit !== savedLimitRequest) {
             fetchResults(searchRequest);
         }

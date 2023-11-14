@@ -2,6 +2,7 @@
   "extends": "./tsconfig.node.json",
   "compilerOptions": {
     "target": "ESNext",
+    "types": ["jest", "@testing-library/jest-dom"],
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "useDefineForClassFields": true,
@@ -15,11 +16,13 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "noEmit": true,
-    "jsx": "react-jsxdev", // Измененное значение
+    "jsx": "react-jsxdev", 
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/main.tsx", "src/**/*.ts", "src/**/*.tsx"]
+  
+  "include": ["src/main.tsx", "src/**/*.ts", "src/**/*.tsx", "**/*.spec.ts",
+  "**/*.d.ts"]
 }

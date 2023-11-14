@@ -1,7 +1,7 @@
 import './SelectBar.css'
 import { SelectBarProps } from '../../constants/interfaces';
 
-const limitOptions = [10, 20, 50, 100]; 
+const limitOptions = ["10", "20", "50", "100"];
 
 function SelectBar({onChange, value}: SelectBarProps) {
     
@@ -12,6 +12,7 @@ function SelectBar({onChange, value}: SelectBarProps) {
                 value={value}
                 onChange={onChange}
                 id='itemPerPage'
+                data-testid='itemPerPage'
                 >
                 {limitOptions.map((option) => (
                     <option key={option} value={option}>
