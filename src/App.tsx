@@ -101,9 +101,7 @@ const App: React.FC<AppProps> = () => {
             ?  <Routes>
                   <Route path="/" element={<CharactersInfo data={infoData}/>}>
                     <Route index element={<CharacterList data={infoData} first/>}/>
-                    <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}>
-                      
-                    </Route>
+                    <Route path="/page/:id" element={<CharacterList data={infoData} first={false}/>}/>
                   </Route>
               </Routes>
             : <h2 className="noresult">No results</h2>
