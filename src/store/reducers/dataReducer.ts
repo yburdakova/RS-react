@@ -1,5 +1,8 @@
 import { DataAction, DataState, DataActionTypes } from "../../types/data";
 
+const storedLimit = localStorage.getItem('limit');
+const storedSearchQuery = localStorage.getItem('searchQuery');
+
 const initialState: DataState = {
     data: {
         info: {
@@ -12,9 +15,9 @@ const initialState: DataState = {
     },
     pages: 0,
     page: 1,
-    limit: 20,
+    limit: storedLimit ? parseInt(storedLimit, 10) : 20,
     loading: false,
-    searchQuery: "",
+    searchQuery: storedSearchQuery || "",
     error: null
 }
 
@@ -29,8 +32,10 @@ export const dataReduser = (state = initialState, action: DataAction): DataState
         case DataActionTypes.SET_DATA_PAGES:
             return {...state, pages: action.payload}
         case DataActionTypes.SET_DATA_LIMIT:
+            localStorage.setItem('limit', JSON.stringify(action.payload));
             return {...state, limit: action.payload}
         case DataActionTypes.SET_SEARCH_QUERY:
+            localStorage.setItem('searchQuery', JSON.stringify(action.payload));
             return {...state, searchQuery: action.payload}
         case DataActionTypes.SET_CURRENT_PAGE:
             return {...state, page: action.payload}

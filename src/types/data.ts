@@ -32,10 +32,10 @@ export interface Data {
 export interface DataState {
     data: Data;
     loading: boolean;
-    pages?: number;
-    limit?: number;
-    page?: number;
-    searchQuery?: string;
+    pages: number;
+    limit: number;
+    page: number;
+    searchQuery: string;
     error: null | string;
 }
 
