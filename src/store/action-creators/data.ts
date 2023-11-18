@@ -7,13 +7,9 @@ export const fetchData = (searchQuery: string = '', page: number = 1) => {
     return async (dispatch: Dispatch<DataAction>)=> {
         try {
             dispatch({type: DataActionTypes.FETCH_DATA})
-                console.log("WE ARE SEARCHING searchQuery: " + searchQuery)
-            
             const url = `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
             const response = await fetch(url);
             const result = await response.json();
-            console.log(result)
-            console.log(result.info.pages)
             dispatch({type: DataActionTypes.FETCH_DATA_SUCCESS, payload: result})
             dispatch({type: DataActionTypes.SET_DATA_PAGES, payload: result.info.pages})
         } catch (error) {
@@ -38,13 +34,6 @@ export const setLimit = (limit: number): DataAction => {
         payload: limit
     };
 };
-
-// export const setPages = (pages: number): DataAction => {
-//     return {
-//         type: DataActionTypes.SET_DATA_PAGES,
-//         payload: pages
-//     };
-// };
 
 export const setPage = (page: number): DataAction => {
     return {

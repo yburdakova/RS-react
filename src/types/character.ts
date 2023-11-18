@@ -22,8 +22,9 @@ export interface Character {
 export interface CharacterState {
     data: Character;
     loading: boolean;
-    currentId: number;
+    currentId: null | number;
     error: null | string;
+    isShown: boolean;
 }
 
 export enum CharacterActionTypes {
@@ -31,6 +32,7 @@ export enum CharacterActionTypes {
     FETCH_CHARACTER_SUCCESS = "FETCH_CHARACTER_SUCCESS",
     FETCH_CHARACTER_ERROR = "FETCH_CHARACTER_ERROR",
     SET_CHARACTER_ID = "SET_CHARACTER_ID",
+    SET_CHARACTER_SHOW = "SET_CHARACTER_SHOW"
 }
 
 interface FetchCharacterAction {
@@ -47,13 +49,19 @@ interface FetchCharacterErrorAction{
     payload: string;
 }
 
-interface SetCharacterPagesAction{
+interface SetCharacterIDAction{
     type: CharacterActionTypes.SET_CHARACTER_ID;
     payload: number;
+}
+
+interface SetCharacterShownAction{
+    type: CharacterActionTypes.SET_CHARACTER_SHOW;
+    payload: boolean;
 }
 
 export type CharacterAction = 
     FetchCharacterAction 
     | FetchCharacterSuccessAction 
     | FetchCharacterErrorAction 
-    | SetCharacterPagesAction
+    | SetCharacterIDAction
+    | SetCharacterShownAction

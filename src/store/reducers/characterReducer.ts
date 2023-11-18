@@ -8,8 +8,9 @@ const initialState: CharacterState = {
         gender: "",
         image: "",
     },
-    currentId: 0,
+    currentId: null,
     loading: false,
+    isShown: false,
     error: null
 }
 
@@ -23,6 +24,8 @@ export const characterReducer = (state = initialState, action: CharacterAction):
             return {...state, loading: false, error: action.payload}
         case CharacterActionTypes.SET_CHARACTER_ID:
             return {...state, currentId: action.payload}
+            case CharacterActionTypes.SET_CHARACTER_SHOW:
+            return {...state, isShown: action.payload}
         default:
             return state
     }

@@ -1,30 +1,42 @@
 import './CharacterCard.css'
-import { CharacterProps } from '../../types/interfaces';
 import InfoItem from '../InfoItem/InfoItem';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Loader from '../Loader/Loader';
+import { useActions } from '../../hooks/useActions';
 
-function CharacterCard({ data } : { data: CharacterProps }) {
 
-  const [showCard, setShowCard] = useState(false)
+const CharacterCard: React.FC = ( ) => {
 
-  const handleCloseCard = () => {
-    setShowCard(false)
-  }
+  const {data, loading, error, currentId, isShown} = useTypedSelector(state => state.character)
+
+  const { fetchCharacter, setIsShown} = useActions()
+
 
   useEffect(()=>{
-    data.name && setShowCard(true)
-  },[])
+    console.log("CharacterCard useEffect - currentId:", currentId);
+    currentId && fetchCharacter(currentId)
+  },[currentId])
+
+  if (loading) {
+    return <Loader/>
+  }
+
+  if (error) {
+      return <h1>{error}</h1>
+  }
   
   return (
     <div className="card-container">
       {
-        showCard
+        isShown
         ? <div className="card-info">
-            <button className="close-card-button" onClick={handleCloseCard}>&#10005;</button>
+            <button className="close-card-button" onClick={()=> setIsShown(false)}>&#10005;</button>
             <h2 className="title">{data.name}</h2>
-            <InfoItem title="Year of birth" infodata={data.birth_year} />
-            <InfoItem title="Height" infodata={data.height} />
-            <InfoItem title="Weigh" infodata={data.mass} />
+            <img src={data.image} alt={`image of ${data.name}`}/>
+            <InfoItem title="Species" infodata={data.species} />
+            <InfoItem title="Gender" infodata={data.gender} />
+            
           </div>
         : ""
       }
