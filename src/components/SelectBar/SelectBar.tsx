@@ -2,7 +2,7 @@ import './SelectBar.css'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
-const limitOptions = [10, 20, 50, 100]; 
+const limitOptions = [10, 20, 40, 60, 100]; 
 
 const SelectBar: React.FC = ( ) => {
 

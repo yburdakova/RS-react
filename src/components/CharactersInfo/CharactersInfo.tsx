@@ -2,13 +2,18 @@ import { Link, Outlet } from 'react-router-dom'
 import './CharactersInfo.css'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
+import { useEffect } from 'react';
 
 const CharactersInfo: React.FC = ( ) => {
 
-    const {limit, data, page} = useTypedSelector(state => state.data)
-    const {setPage} = useActions()
+    const {limit, data, page, searchQuery} = useTypedSelector(state => state.data)
+    const {setPage, fetchData} = useActions()
 
     const pagesList = Array.from({ length: Math.ceil(data.info.count/limit) }, (_, index) => index + 1);
+
+    useEffect(() =>{
+        fetchData(searchQuery, page)
+    }, [page])
 
     return (
         <section id="main-section">

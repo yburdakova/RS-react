@@ -1,8 +1,11 @@
 import Loader from '../Loader/Loader';
-import { DataState, Character } from '../../types/data';
+import { Character } from '../../types/character';
 import './CharacterList.css'
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-const CharacterList = ({loading, error, data}: DataState) => {
+const CharacterList = () => {
+
+    const {loading, error, data, limit} = useTypedSelector(state => state.data)
 
     if (loading) {
         return <Loader/>
@@ -17,9 +20,9 @@ const CharacterList = ({loading, error, data}: DataState) => {
             <div id="sidebar">
                 <nav>
                     <ul>
-                        {data.results.map((character : Character) => (
+                        {data.results.slice(0, limit).map((character : Character, index:number) => (
                             <li key={character.id} >
-                                <a href="" className="">{`${character.id}. ${character.name}`}</a>
+                                <a href="" className="">{`${index+1}. ${character.name}`}</a>
                             </li>
                             
                         ))}

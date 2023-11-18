@@ -2,16 +2,14 @@ import { Dispatch } from "redux";
 import { DataAction, DataActionTypes } from "../../types/data";
 import type {} from 'redux-thunk/extend-redux';
 
-const API_BASE_URL = 'https://rickandmortyapi.com/api/character';
-
-export const fetchData = (searchQuery: string) => {
+export const fetchData = (searchQuery: string = '', page: number = 1) => {
 
     return async (dispatch: Dispatch<DataAction>)=> {
         try {
             dispatch({type: DataActionTypes.FETCH_DATA})
-                console.log(searchQuery)
-            const url = searchQuery ? `${API_BASE_URL}/?name=${searchQuery}`: API_BASE_URL
-
+                console.log("WE ARE SEARCHING searchQuery: " + searchQuery)
+            
+            const url = `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
             const response = await fetch(url);
             const result = await response.json();
             console.log(result)
@@ -28,7 +26,6 @@ export const fetchData = (searchQuery: string) => {
 }
 
 export const setSearchRequest = ( searchQuery: string ): DataAction => {
-    console.log (`setSearchRequest function got: ${searchQuery} for query`)
     return {
         type: DataActionTypes.SET_SEARCH_QUERY,
         payload: searchQuery
@@ -42,8 +39,14 @@ export const setLimit = (limit: number): DataAction => {
     };
 };
 
+// export const setPages = (pages: number): DataAction => {
+//     return {
+//         type: DataActionTypes.SET_DATA_PAGES,
+//         payload: pages
+//     };
+// };
+
 export const setPage = (page: number): DataAction => {
-    console.log (`setPage function got: ${page} for current page`)
     return {
         type: DataActionTypes.SET_CURRENT_PAGE,
         payload: page

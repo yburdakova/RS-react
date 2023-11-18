@@ -1,23 +1,4 @@
-export interface Character {
-    id: number;
-    name: string;
-    status: string;
-    species: string;
-    type: string;
-    gender: string;
-    origin: {
-        name: string;
-        url: string;
-    };
-    location: {
-        name: string;
-        url: string;
-    };
-    image: string;
-    episode: string[];
-    url: string;
-    created: string;
-}
+import { Character } from "./character";
 
 export interface Data {
     info: {
@@ -31,6 +12,7 @@ export interface Data {
 
 export interface DataState {
     data: Data;
+    characterData?: Character;
     loading: boolean;
     pages: number;
     limit: number;
@@ -48,6 +30,7 @@ export enum DataActionTypes {
     SET_DATA_LIMIT = "SET_DATA_LIMIT",
     SET_CURRENT_PAGE = "SET_DATA_PAGE"
 }
+
 interface FetchDataAction {
     type: DataActionTypes.FETCH_DATA;
 }
