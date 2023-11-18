@@ -1,4 +1,4 @@
-import { CharacterProps } from "../constants/interfaces";
+import { CharacterProps } from "../types/interfaces";
 
 const API_BASE_URL = 'https://swapi.dev/api/people/';
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import ErrorBoundary from './ErrorBoundary';
 import './index.css';
-import { InitialProps } from './constants/interfaces.ts';
+import { InitialProps } from './types/interfaces.ts';
 import { BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/index.ts';

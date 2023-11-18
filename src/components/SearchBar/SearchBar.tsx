@@ -1,5 +1,5 @@
 import './SearchBar.css'
-import { SearchBarProps } from '../../constants/interfaces';
+import { SearchBarProps } from '../../types/interfaces';
 
 function SearchBar({ onSubmit, onChange, value } : SearchBarProps) {
   

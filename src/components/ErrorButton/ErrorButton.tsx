@@ -1,5 +1,5 @@
 import './ErrorButton.css'
-import { ErrorButtonProps } from '../../constants/interfaces';
+import { ErrorButtonProps } from '../../types/interfaces';
 
 function ErrorButton({ onClick }:ErrorButtonProps) {
   return (

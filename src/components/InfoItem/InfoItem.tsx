@@ -1,5 +1,5 @@
 import './InfoItem.css';
-import { InfoItemProps } from '../../constants/interfaces';
+import { InfoItemProps } from '../../types/interfaces';
 
 
 function InfoItem({ title, infodata } :InfoItemProps) {

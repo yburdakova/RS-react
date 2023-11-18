@@ -1,9 +1,9 @@
-import { CharacterProps } from "../../constants/interfaces"
+import { CharacterProps } from "../../types/interfaces"
 import { useParams } from "react-router-dom";
 import './CharacterList.css'
 import { useEffect, useState } from "react";
 import { fetchPeople } from "../../api/api";
-import { CharacterCard, Loader } from "../";
+import { CharacterCard, Loader } from "..";
 
 function CharacterList({ data, first }: { data: CharacterProps[][], first: boolean }) {
 

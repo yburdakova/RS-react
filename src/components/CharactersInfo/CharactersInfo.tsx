@@ -1,15 +1,27 @@
 import { Link, Outlet } from 'react-router-dom'
-import { CharacterProps } from '../../constants/interfaces'
+import './CharactersInfo.css'
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 
-function CharactersInfo({ data  } :  { data: CharacterProps[][] }) {
+const CharactersInfo: React.FC = ( ) => {
+
+    const {limit, data, page} = useTypedSelector(state => state.data)
+    const {setPage} = useActions()
+
+    const pagesList = Array.from({ length: Math.ceil(data.info.count/limit) }, (_, index) => index + 1);
 
     return (
         <section id="main-section">
             <div id="pages">
                 <div className="pages-title">Pages:</div>
-                {data.map((_, index) => (
-                    <Link to={`/page/${index+1}`} className="page-link" key={`page-${index+1}`}>
-                        { index +1 }
+                {pagesList.map( p => (
+                    <Link 
+                        key={`page-${p}`}
+                        to={`/page/${p}`} 
+                        className={p === page? "page-link-active" : "page-link"} 
+                        onClick={()=> setPage(p)}
+                    >
+                        { p }
                     </Link>
                 ))}
             </div>

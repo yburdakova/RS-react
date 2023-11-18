@@ -39,13 +39,6 @@ export interface CharacterProps {
   url?: string;
 }
 
-export interface AppProps {
-  data: CharacterProps[];
-  loading: boolean;
-  searchValue: string;
-  searchRequest: string;
-  isError?: boolean;
-}
 
 export interface SearchBarProps {
   onSubmit: (event: React.FormEvent) => void;
@@ -69,29 +62,9 @@ export interface RouteError {
   statusText?: string;
   message?: string;
 }
+export interface CharactersInfoProps {
+  pages: number;
+  limit: number;
+}
+//======================================
 
-export interface DataState {
-  data: CharacterProps[];
-  loading: boolean;
-  error: null | string;
-}
-
-export enum DataActionTypes {
-  FETCH_DATA = "FETCH_DATA",
-  FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS",
-  FETCH_DATA_ERROR = "FETCH_DATA_ERROR",
-}
-interface FetchDataAction {
-  type: DataActionTypes.FETCH_DATA;
-}
-
-interface FetchDataSuccessAction {
-  type: DataActionTypes.FETCH_DATA_SUCCESS;
-  payload: CharacterProps[] 
-}
-
-interface fetchDataErrorAction{
-  type: DataActionTypes.FETCH_DATA_ERROR;
-  payload: string;
-}
-export type DataAction = FetchDataAction | FetchDataSuccessAction | fetchDataErrorAction;
