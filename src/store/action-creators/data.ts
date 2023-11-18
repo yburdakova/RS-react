@@ -4,12 +4,13 @@ import type {} from 'redux-thunk/extend-redux';
 
 const API_BASE_URL = 'https://rickandmortyapi.com/api/character';
 
-export const fetchData = (searchQuery = "") => {
+export const fetchData = (searchQuery: string) => {
+
     return async (dispatch: Dispatch<DataAction>)=> {
         try {
             dispatch({type: DataActionTypes.FETCH_DATA})
-
-            const url = searchQuery? `${API_BASE_URL}/?name=${searchQuery}` : API_BASE_URL
+                console.log(searchQuery)
+            const url = searchQuery ? `${API_BASE_URL}/?name=${searchQuery}`: API_BASE_URL
 
             const response = await fetch(url);
             const result = await response.json();
@@ -27,6 +28,7 @@ export const fetchData = (searchQuery = "") => {
 }
 
 export const setSearchRequest = ( searchQuery: string ): DataAction => {
+    console.log (`setSearchRequest function got: ${searchQuery} for query`)
     return {
         type: DataActionTypes.SET_SEARCH_QUERY,
         payload: searchQuery

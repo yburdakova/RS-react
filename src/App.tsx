@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ProductsList, SelectBar} from './components';
+import { ErrorButton, ProductsList, SearchBar, SelectBar} from './components';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useTypedSelector } from './hooks/useTypedSelector';
@@ -8,7 +8,7 @@ import CharactersInfo from './components/CharactersInfo/CharactersInfo';
 
 const App: React.FC = () => {
 
-  const {data, error, loading, limit} = useTypedSelector(state => state.data);
+  const {data, error, loading } = useTypedSelector(state => state.data);
   const {fetchData} = useActions();
 
   useEffect(() =>{
@@ -21,8 +21,8 @@ const App: React.FC = () => {
         <div className="container">
           <section id="top-section">
             <div className="search_container">
-              <div className="">search bar</div>
-              <div className="">error button</div>
+              <SearchBar/>
+              <ErrorButton/>
             </div>
             <SelectBar/>
           </section>

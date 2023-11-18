@@ -35,7 +35,8 @@ export const dataReduser = (state = initialState, action: DataAction): DataState
             localStorage.setItem('limit', JSON.stringify(action.payload));
             return {...state, limit: action.payload}
         case DataActionTypes.SET_SEARCH_QUERY:
-            localStorage.setItem('searchQuery', JSON.stringify(action.payload));
+            localStorage.setItem('searchQuery', action.payload);
+            console.log(state)
             return {...state, searchQuery: action.payload}
         case DataActionTypes.SET_CURRENT_PAGE:
             return {...state, page: action.payload}

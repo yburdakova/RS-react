@@ -1,4 +1,4 @@
-import { FormEvent } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import './SearchBar.css'
@@ -6,15 +6,18 @@ import './SearchBar.css'
 const SearchBar: React.FC = ( ) => {
 
   const {searchQuery} = useTypedSelector(state => state.data)
-    const {setSearchRequest} = useActions()
-
-    const handleChande = () => {
-
-    }
+  const {setSearchRequest, fetchData} = useActions()
+  const [localSearchQuery, setLocalSearchQuery] = useState<string>(searchQuery);
+    
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      setSearchRequest()
+      setSearchRequest(localSearchQuery)
     }
+
+    useEffect(() =>{
+      fetchData(searchQuery)
+  }, [searchQuery])
+
   
   return (
     <search role='search' className="search-container">
@@ -23,8 +26,8 @@ const SearchBar: React.FC = ( ) => {
           id="search"
           type="text"
           placeholder="Search..."
-          onChange={handleChande}
-          value={searchQuery}
+          onChange={(e) => setLocalSearchQuery(e.target.value)}
+          value={localSearchQuery}
           className="search_input"
         />
         <button className="search_button" type="submit">

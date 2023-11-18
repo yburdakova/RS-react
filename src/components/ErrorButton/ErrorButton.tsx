@@ -1,9 +1,15 @@
 import './ErrorButton.css'
-import { ErrorButtonProps } from '../../types/interfaces';
 
-function ErrorButton({ onClick }:ErrorButtonProps) {
+
+function ErrorButton() {
+
+  const handleError = () => {
+    throw new Error('Test error');
+  };
+
+
   return (
-    <button className="error_button" type="button" onClick={onClick}>
+    <button className="error_button" type="button" onClick={handleError}>
         ERROR
       </button>
   )
