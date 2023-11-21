@@ -1,18 +1,19 @@
 import { Link, Outlet } from 'react-router-dom'
 import './CharactersInfo.css'
-import { useActions } from '../../hooks/useActions';
 import { useEffect } from 'react';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { fetchData, setPage } from '../../store/reducers/dataActionCreators';
+import { setId } from '../../store/reducers/characterActionCreators';
 
 const CharactersInfo: React.FC = ( ) => {
 
     const {limit, data, page, searchQuery} = useAppSelector( state => state.dataReducer)
-    const {setPage, fetchData} = useActions()
-
     const pagesList = Array.from({ length: Math.ceil(data.info.count/limit) }, (_, index) => index + 1);
+    const dispatch = useAppDispatch();
 
     useEffect(() =>{
-        fetchData(searchQuery, page)
+        dispatch(fetchData(searchQuery, page))
+        dispatch(setId(0))
     }, [page])
 
     return (
@@ -24,7 +25,7 @@ const CharactersInfo: React.FC = ( ) => {
                         key={`page-${p}`}
                         to={`/page/${p}`} 
                         className={p === page? "page-link-active" : "page-link"} 
-                        onClick={()=> setPage(p)}
+                        onClick={()=> dispatch(setPage(p))}
                     >
                         { p }
                     </Link>

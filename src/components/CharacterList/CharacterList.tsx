@@ -1,16 +1,15 @@
 import Loader from '../Loader/Loader';
 import { ICharacter } from '../../types/character';
 import './CharacterList.css'
-import { useActions } from '../../hooks/useActions';
-
 import CharacterCard from '../CharacterCard/CharacterCard';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setId } from '../../store/reducers/characterActionCreators';
 
 const CharacterList = () => {
 
     const {loading, error, data, limit} = useAppSelector( state => state.dataReducer)
 
-    const {setId} = useActions()
+    const dispatch = useAppDispatch();
 
     if (loading) {
         return <Loader/>
@@ -26,7 +25,7 @@ const CharacterList = () => {
                 <nav>
                     <ul>
                         {data.results.slice(0, limit).map((character : ICharacter) => (
-                            <li key={character.id} onClick={() => setId(character.id)}>
+                            <li key={character.id} onClick={() => dispatch(setId(character.id))}>
                                 <a href="#" className="">{`${character.name}`}</a>
                             </li>
                             

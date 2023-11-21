@@ -1,4 +1,4 @@
-import { Character } from "./character";
+import { ICharacter } from "./character";
 
 export interface IData {
     info: {
@@ -7,12 +7,12 @@ export interface IData {
         next?: string;
         prev?: string;
     };
-    results: Character[];
+    results: ICharacter[];
 }
 
 export interface DataState {
-    data: Data;
-    characterData?: Character;
+    data: IData;
+    characterData?: ICharacter;
     loading: boolean;
     pages: number;
     limit: number;
@@ -20,56 +20,3 @@ export interface DataState {
     searchQuery: string;
     error: null | string;
 }
-
-export enum DataActionTypes {
-    FETCH_DATA = "FETCH_DATA",
-    FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS",
-    FETCH_DATA_ERROR = "FETCH_DATA_ERROR",
-    SET_DATA_PAGES = "SET_DATA_PAGES",
-    SET_SEARCH_QUERY = "SET_SEARCH_QUERY",
-    SET_DATA_LIMIT = "SET_DATA_LIMIT",
-    SET_CURRENT_PAGE = "SET_DATA_PAGE"
-}
-
-interface FetchDataAction {
-    type: DataActionTypes.FETCH_DATA;
-}
-
-interface FetchDataSuccessAction {
-    type: DataActionTypes.FETCH_DATA_SUCCESS;
-    payload: Data
-}
-
-interface FetchDataErrorAction{
-    type: DataActionTypes.FETCH_DATA_ERROR;
-    payload: string;
-}
-
-interface SetDataPagesAction{
-    type: DataActionTypes.SET_DATA_PAGES;
-    payload: number;
-}
-
-interface SetDataLimitAction{
-    type: DataActionTypes.SET_DATA_LIMIT;
-    payload: number;
-}
-
-interface SetCurrentPageAction{
-    type: DataActionTypes.SET_CURRENT_PAGE;
-    payload: number;
-}
-
-interface SetSearchQueryAction{
-    type: DataActionTypes.SET_SEARCH_QUERY;
-    payload: string;
-}
-
-export type DataAction = 
-    FetchDataAction 
-    | FetchDataSuccessAction 
-    | FetchDataErrorAction 
-    | SetDataPagesAction
-    | SetSearchQueryAction
-    | SetDataLimitAction
-    | SetCurrentPageAction

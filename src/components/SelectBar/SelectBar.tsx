@@ -1,13 +1,15 @@
 import './SelectBar.css'
-import { useActions } from '../../hooks/useActions';
-import { useAppSelector } from '../../hooks/redux';
+
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setLimit } from '../../store/reducers/dataActionCreators';
 
 const limitOptions = [10, 20, 40, 60, 100]; 
 
 const SelectBar: React.FC = ( ) => {
 
     const { limit } = useAppSelector( state => state.dataReducer)
-    const {setLimit} = useActions()
+    
+    const dispatch = useAppDispatch();
     
     
     return (
@@ -15,7 +17,7 @@ const SelectBar: React.FC = ( ) => {
             <h3 className="">Number of items shown per page: </h3>
             <select
                 value={limit}
-                onChange={(e) => setLimit(parseInt(e.target.value))}
+                onChange={(e) => dispatch(setLimit(parseInt(e.target.value)))}
             >
                 {limitOptions.map((option) => (
                     <option key={option} value={option}>

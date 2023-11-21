@@ -21,7 +21,6 @@ export const InitialProps = {
 };
 
 
-
 export interface SearchBarProps {
   onSubmit: (event: React.FormEvent) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -48,5 +47,3 @@ export interface CharactersInfoProps {
   pages: number;
   limit: number;
 }
-//======================================
-

@@ -2,20 +2,20 @@ import './CharacterCard.css'
 import InfoItem from '../InfoItem/InfoItem';
 import { useEffect } from 'react';
 import Loader from '../Loader/Loader';
-import { useActions } from '../../hooks/useActions';
-import { useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { fetchCharacter, setIsShown } from '../../store/reducers/characterActionCreators';
 
 
 const CharacterCard: React.FC = ( ) => {
 
-  const {data, loading, error, currentId, isShown} = useAppSelector( state => state.characterReducer)
+  const { data, loading, error, currentId, isShown } = useAppSelector( state => state.characterReducer)
 
-  const { fetchCharacter, setIsShown} = useActions()
+  const dispatch = useAppDispatch();
 
 
   useEffect(()=>{
     console.log("CharacterCard useEffect - currentId:", currentId);
-    currentId && fetchCharacter(currentId)
+    currentId && dispatch(fetchCharacter(currentId))
   },[currentId])
 
   if (loading) {
@@ -31,7 +31,7 @@ const CharacterCard: React.FC = ( ) => {
       {
         isShown
         ? <div className="card-info">
-            <button className="close-card-button" onClick={()=> setIsShown(false)}>&#10005;</button>
+            <button className="close-card-button" onClick={()=> dispatch(setIsShown(false))}>&#10005;</button>
             <h2 className="title">{data.name}</h2>
             <img src={data.image} alt={`image of ${data.name}`}/>
             <InfoItem title="Species" infodata={data.species} />

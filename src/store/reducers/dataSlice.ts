@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { DataState } from "../../types/data";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { DataState, IData } from "../../types/data";
 
 const storedLimit = localStorage.getItem('limit');
 const storedSearchQuery = localStorage.getItem('searchQuery');
@@ -26,7 +26,30 @@ export const dataSlice = createSlice({
     name: 'data',
     initialState,
     reducers:{
-
+        dataFetching(state){
+            state.loading = true;
+        },
+        dataFetchingSuccess(state, action: PayloadAction<IData>){
+            state.loading = false;
+            state.error = '';
+            state.data = action.payload
+        },
+        dataFetchingErrorr(state, action: PayloadAction<string>){
+            state.loading = false;
+            state.error = action.payload;
+        },
+        setDataPages(state, action: PayloadAction<number>){
+            state.pages = action.payload
+        },
+        setSearchRequest(state, action:PayloadAction<string>){
+            state.searchQuery = action.payload
+        },
+        setLimit (state, action: PayloadAction<number>){
+            state.limit = action.payload
+        },
+        setPage (state, action: PayloadAction<number>){
+            state.page = action.payload
+        }
     }
 })
 

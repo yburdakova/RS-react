@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { ErrorButton, ProductsList, SearchBar, SelectBar} from './components';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { useActions } from './hooks/useActions';
 import CharactersInfo from './components/CharactersInfo/CharactersInfo';
+import { useAppDispatch } from './hooks/redux';
+import { fetchData } from './store/reducers/dataActionCreators';
 
 const App: React.FC = () => {
-
-  const {fetchData} = useActions();
+  const dispatch = useAppDispatch();
 
   useEffect(() =>{
-      fetchData()
+      dispatch(fetchData())
   }, [])
 
 

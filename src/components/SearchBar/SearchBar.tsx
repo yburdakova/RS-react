@@ -1,21 +1,28 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { useActions } from '../../hooks/useActions'
 import './SearchBar.css'
-import { useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { setSearchRequest, fetchData } from '../../store/reducers/dataActionCreators'
+import { setId } from '../../store/reducers/characterActionCreators'
+import {  useNavigate } from 'react-router-dom'
 
 const SearchBar: React.FC = ( ) => {
 
   const {searchQuery} = useAppSelector( state => state.dataReducer)
-  const {setSearchRequest, fetchData} = useActions()
   const [localSearchQuery, setLocalSearchQuery] = useState<string>(searchQuery);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
     
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      setSearchRequest(localSearchQuery)
+      dispatch(setId(0))
+      navigate('/')
+      dispatch(setSearchRequest(localSearchQuery))
     }
 
     useEffect(() =>{
-      fetchData(searchQuery)
+      dispatch(setId(0))
+      dispatch(fetchData(searchQuery))
   }, [searchQuery])
 
   
