@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
-import { useTypedSelector } from '../../hooks/useTypedSelector'
 import './SearchBar.css'
+import { useAppSelector } from '../../hooks/redux'
 
 const SearchBar: React.FC = ( ) => {
 
-  const {searchQuery} = useTypedSelector(state => state.data)
+  const {searchQuery} = useAppSelector( state => state.dataReducer)
   const {setSearchRequest, fetchData} = useActions()
   const [localSearchQuery, setLocalSearchQuery] = useState<string>(searchQuery);
     
