@@ -1,12 +1,12 @@
 import { Link, Outlet } from 'react-router-dom'
 import './CharactersInfo.css'
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import { useEffect } from 'react';
+import { useAppSelector } from '../../hooks/redux';
 
 const CharactersInfo: React.FC = ( ) => {
 
-    const {limit, data, page, searchQuery} = useTypedSelector(state => state.data)
+    const {limit, data, page, searchQuery} = useAppSelector( state => state.dataReducer)
     const {setPage, fetchData} = useActions()
 
     const pagesList = Array.from({ length: Math.ceil(data.info.count/limit) }, (_, index) => index + 1);
