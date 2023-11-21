@@ -11,7 +11,6 @@ const SelectBar: React.FC = ( ) => {
     
     const dispatch = useAppDispatch();
     
-    
     return (
         <div className='select-container'>
             <h3 className="">Number of items shown per page: </h3>

@@ -26,3 +26,4 @@ export const setLimit = (limit: number) => (dispatch: AppDispatch) =>{
 export const setPage = (page: number) => (dispatch: AppDispatch) =>{
     return dispatch(dataSlice.actions.setPage(page))
 };
+
