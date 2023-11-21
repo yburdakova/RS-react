@@ -1,11 +1,10 @@
-import { combineReducers } from "redux";
-import { dataReduser } from "./dataReducer";
-import { characterReducer } from "./characterReducer";
+import { combineReducers } from "@reduxjs/toolkit";
+import characterReducer from './characterSlice'
 
 
 export const rootReducer = combineReducers({
-    data: dataReduser,
-    character: characterReducer
+
+    characterReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

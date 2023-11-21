@@ -25,9 +25,9 @@ const CharacterList = () => {
             <div id="sidebar">
                 <nav>
                     <ul>
-                        {data.results.slice(0, limit).map((character : Character, index:number) => (
+                        {data.results.slice(0, limit).map((character : Character) => (
                             <li key={character.id} onClick={() => setId(character.id)}>
-                                <a href="#" className="">{`${index+1}. ${character.name}`}</a>
+                                <a href="#" className="">{`${character.name}`}</a>
                             </li>
                             
                         ))}

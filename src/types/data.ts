@@ -1,6 +1,6 @@
 import { Character } from "./character";
 
-export interface Data {
+export interface IData {
     info: {
         count: number;
         pages: number;
