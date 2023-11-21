@@ -1,0 +1,32 @@
+.card-container{
+  display: flex;
+  width: 100%;
+
+  justify-content: center;
+ 
+  
+}
+.card-info {
+
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 36px;
+  padding: 20px;
+  position: relative;
+}
+
+.close-card-button{
+  background-color: transparent;  
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  transition: all 0.3s ease 0s;
+}
+
+.close-card-button:hover{
+  border-color:transparent;
+  transform: rotate(90deg); 
+}
+.close-card-button:focus{
+  outline: none;
+}
