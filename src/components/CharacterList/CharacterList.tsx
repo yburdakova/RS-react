@@ -1,14 +1,14 @@
 import Loader from '../Loader/Loader';
-import { Character } from '../../types/character';
+import { ICharacter } from '../../types/character';
 import './CharacterList.css'
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
 import CharacterCard from '../CharacterCard/CharacterCard';
+import { useAppSelector } from '../../hooks/redux';
 
 const CharacterList = () => {
 
-    const {loading, error, data, limit} = useTypedSelector(state => state.data)
+    const {loading, error, data, limit} = useAppSelector( state => state.dataReducer)
 
     const {setId} = useActions()
 
@@ -25,7 +25,7 @@ const CharacterList = () => {
             <div id="sidebar">
                 <nav>
                     <ul>
-                        {data.results.slice(0, limit).map((character : Character) => (
+                        {data.results.slice(0, limit).map((character : ICharacter) => (
                             <li key={character.id} onClick={() => setId(character.id)}>
                                 <a href="#" className="">{`${character.name}`}</a>
                             </li>
