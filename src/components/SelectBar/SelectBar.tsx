@@ -1,12 +1,12 @@
 import './SelectBar.css'
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
+import { useAppSelector } from '../../hooks/redux';
 
 const limitOptions = [10, 20, 40, 60, 100]; 
 
 const SelectBar: React.FC = ( ) => {
 
-    const { limit } = useTypedSelector(state => state.data)
+    const { limit } = useAppSelector( state => state.dataReducer)
     const {setLimit} = useActions()
     
     
