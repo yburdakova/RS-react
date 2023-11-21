@@ -1,14 +1,14 @@
 import './CharacterCard.css'
 import InfoItem from '../InfoItem/InfoItem';
 import { useEffect } from 'react';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Loader from '../Loader/Loader';
 import { useActions } from '../../hooks/useActions';
+import { useAppSelector } from '../../hooks/redux';
 
 
 const CharacterCard: React.FC = ( ) => {
 
-  const {data, loading, error, currentId, isShown} = useTypedSelector(state => state.character)
+  const {data, loading, error, currentId, isShown} = useAppSelector( state => state.characterReducer)
 
   const { fetchCharacter, setIsShown} = useActions()
 
