@@ -1,13 +1,10 @@
 .card-container{
   display: flex;
   width: 100%;
-
-  justify-content: center;
- 
-  
+  justify-content: center;  
 }
-.card-info {
 
+.card-info {
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 36px;
@@ -27,6 +24,7 @@
   border-color:transparent;
   transform: rotate(90deg); 
 }
+
 .close-card-button:focus{
   outline: none;
 }
