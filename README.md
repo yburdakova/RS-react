@@ -9,6 +9,12 @@ RS School, which stands for "The Rolling Scopes School," is a community-driven e
 ## Coursework
 
 This repository is organized to showcase the work and assignments I've completed during the RS School React course. Each directory and file represents a different module or task.
+    * module01-react-components
+    * module02-react-routing
+    * module03-context-api
+    * module04-Redux-RTK
+    * module05-nextjs
+    * moddule06-react-form
 
 ## Repository Structure
 
