@@ -1,0 +1,60 @@
+footer{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background-color: var(--custom-blue);
+  margin-top: 30px;
+  padding-top: 30px;
+}
+
+footer div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a{
+  text-decoration: none;
+  margin-left: 10px;
+  display: flex;
+}
+
+footer a:hover{
+  color: #747474;
+}
+
+.rs-logo{
+  width: 160px;
+  height: 80px;
+  background-image: url(/src/assets/rs_school-light.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.git-logo {
+  width: 24px;
+  height: 24px;
+  background-image: url(/src/assets/github-light.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+footer a:hover .rs-logo {
+  filter: invert(0.5);
+}
+
+footer a:hover .git-logo {
+  filter: invert(0.5);
+}
+
+
+@media (prefers-color-scheme: light) {
+  .rs-logo{
+    background-image: url(/src/assets/rs_school-dark.svg);
+  }
+  .git-logo{
+    background-image: url(/src/assets/github-dark.svg);
+  }
+}

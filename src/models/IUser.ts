@@ -6,4 +6,5 @@ export interface IUser {
   age: number;
   password: string;
   gender: string;
+  country: string;
 }
