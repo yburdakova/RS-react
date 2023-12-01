@@ -15,3 +15,15 @@ main {
   width: 100%;
 }
 
+.nopage{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-grow: 1; 
+}
+
+.nopage-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
