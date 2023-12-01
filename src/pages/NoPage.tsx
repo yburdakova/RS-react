@@ -14,7 +14,7 @@ export const NoPage = () => {
           {error}
         </div>
         <button>
-          <Link to="/">Сome Back Home</Link>
+          <Link to="/">Come Back Home</Link>
         </button>
       </div>
     </div>

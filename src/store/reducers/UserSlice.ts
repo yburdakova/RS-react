@@ -8,7 +8,21 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  users: [],
+  users: [
+    {
+      id: 1,
+      name: "Ivan",
+      email: 'ivan@gmail.com',
+      age: 23,
+      password: "kwjhcwehdw",
+      confirmPassword: "ksdcwkeg",
+      gender: "male",
+      country: "Belarus",
+      accept: true,
+      picture: "/src/assets/user-avatar.png"
+    },
+    
+  ],
   isLoading: false,
   error:''
 }

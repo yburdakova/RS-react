@@ -1,0 +1,62 @@
+.dataContainer{
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  }
+
+.userCard {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  opacity: 0;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #202020, #272727);
+  box-shadow:  6px 6px 12px #1c1c1c,
+              -6px -6px 12px #2c2c2c;
+  width: 40%;
+  justify-content: space-around;
+  margin: 30px auto;
+  animation: fadeIn 1s linear forwards;
+}
+
+.imgBox img{
+  width: 200px;
+  border-radius: 50%;
+}
+
+.checked{
+  position: relative;
+  
+}
+.checked:after {
+  content: "\2714";
+  position: absolute;
+  bottom: 20px;
+  opacity:0;
+  right: 80px;
+  transform: rotate(-20deg);
+  color: greenyellow;
+  font-size: 100px;
+  animation: fadeIn 0.5s 0.5s linear forwards;
+
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity:0;
+  }
+  to { 
+    opacity:1;
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  .userCard{
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow:  6px 6px 12px #c9c9c9,
+                -6px -6px 12px #ffffff;
+  }
+}

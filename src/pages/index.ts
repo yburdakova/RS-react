@@ -1,13 +1,13 @@
 import { Layout } from "./Layout";
 import { Home } from "./Home";
-import { ControlledForm } from "./ControlledForm";
-import { UncontrolledForm } from "./UncontrolledForm";
+import { ControllableForm } from "./ControllableForm";
+import { UncontrollableForm } from "./UncontrollableForm";
 import { NoPage } from "./NoPage";
 
 export {
   Layout,
   Home,
-  ControlledForm,
-  UncontrolledForm,
+  ControllableForm,
+  UncontrollableForm,
   NoPage
 }
