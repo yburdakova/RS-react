@@ -1,5 +1,18 @@
-export interface IUser {
+export interface IUser{
   id: number;
+  name?: string;
+  age?: number;
+  gender?: string;
+  country?: string;
+  picture?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+  accept?: boolean;
+}
+
+
+export interface IForm {
   name?: string;
   age?: number;
   gender?: 'male' | 'female' | 'other';
@@ -9,13 +22,13 @@ export interface IUser {
   password?: string;
   confirmPassword?: string;
   accept?: boolean;
+  id: number;
 }
-
-export interface IForm extends IUser {
+export interface IUncontrollableForm extends IForm {
   picture?: File;
 }
 
-export interface ISubmitForm extends IUser {
+export interface IControllableForm extends IForm {
   picture: string;
 }
 
