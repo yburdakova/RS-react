@@ -12,8 +12,12 @@ This repository is organized to showcase the work and assignments I've completed
 
 ## Repository Structure
 
-- `module01/`: [React. Components]
-
+- `module01`: [React. Components]
+- `module02`: [React. Routing]
+- `module01`: [React. Context API]
+- `module03`: [React. Redux RTK]
+- `module04`: [React. Next.js]
+- `module05`: [React. React Form]
 
 ## Getting Started
 
