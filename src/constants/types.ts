@@ -1,5 +1,5 @@
 export interface IUser{
-  id: number;
+  id?: number;
   name?: string;
   age?: number;
   gender?: string;
@@ -22,7 +22,7 @@ export interface IForm {
   password?: string;
   confirmPassword?: string;
   accept?: boolean;
-  id: number;
+  id?: number;
 }
 export interface IUncontrollableForm extends IForm {
   picture?: File;

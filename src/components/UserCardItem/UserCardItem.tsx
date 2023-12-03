@@ -2,7 +2,7 @@ import './UserCardItem.css'
 
 interface IUserCardItem {
   title: string;
-  data: string | number;
+  data: string | number | boolean | undefined;
 }
 
 export const UserCardItem = ({title, data}: IUserCardItem) => {

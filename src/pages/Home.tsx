@@ -38,7 +38,7 @@ export const Home = () => {
         </nav>
       </section>
       <section className={styles.dataContainer}>
-        {users.length ? 
+        {users.length !== 0? 
           users.map((user, index) => (
             <div
               key={`user-${index}`}
