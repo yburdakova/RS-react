@@ -13,7 +13,7 @@ export const Home = () => {
       setCheckedIndex(0);
       const timeoutId = setTimeout(() => {
         setCheckedIndex(null);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timeoutId);
     }

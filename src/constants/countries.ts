@@ -1,4 +1,4 @@
-export const country = [
+export const countries = [
   "Afghanistan",
   "Albania",
   "Algeria",

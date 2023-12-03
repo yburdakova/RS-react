@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { IUser } from "../../models/IUser";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ISubmitForm } from "../../constants/types";
 
 interface UserState {
-  users: IUser[];
+  users: ISubmitForm[];
   isLoading: boolean;
   error: string;
 }
@@ -28,12 +28,14 @@ const initialState: UserState = {
 }
 
 
-export const UserSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers:{
-
-  }
+  reducers: {
+    setUser(state, action: PayloadAction<ISubmitForm[]>) {
+      state.users = action.payload
+    },
+  },
 })
 
-export default UserSlice.reducer
+export default userSlice.reducer
