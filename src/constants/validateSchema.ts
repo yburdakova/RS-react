@@ -12,7 +12,7 @@ export const schema = yup.object().shape({
     .integer('Age must be an integer'),
   gender: yup
     .string()
-    .oneOf(['male', 'female'])
+    .oneOf(['maleGender', 'femaleGender', 'otherGender'])
     .required('Choose the gender, this is required'),
   country: yup.string().required('Country is a required field'),
   picture: yup

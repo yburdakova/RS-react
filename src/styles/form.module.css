@@ -120,3 +120,19 @@ input[type="checkbox"]{
 .smallLink:hover {
   text-decoration: underline #5a5a5a;
 }
+
+.passwordStrengthMeter {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.strengthIndicator {
+  height: 10px;
+  transition: width 0.3s;
+}
+
+.strengthText {
+  margin-top: 5px;
+  font-weight: bold;
+  color: #333;
+}

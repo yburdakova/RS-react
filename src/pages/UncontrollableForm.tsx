@@ -82,10 +82,10 @@ export const UncontrollableForm = () => {
       country: countryField.current?.value,
       email: emailField.current?.value,
       gender: genderMailField.current?.checked
-        ? 'male'
+        ? 'maleGender'
         : genderFemailField.current?.checked
-        ? 'female'
-        : 'other',
+        ? 'femaleGender'
+        : 'otherGender',
       name: nameField.current?.value,
       password: passwordField.current?.value,
       picture: imageObject,
@@ -213,7 +213,7 @@ export const UncontrollableForm = () => {
               return <option key={i} value={el} />;
             })}
           </datalist>
-        {error.gender && (
+        {error.country && (
           <p className={`${styles.errorMessage} ${styles.show}`}>
             {error['country']}
           </p>

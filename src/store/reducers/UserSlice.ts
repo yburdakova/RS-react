@@ -1,17 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IUser } from "../../constants/types";
+import { IControllableForm, UserState } from "../../constants/types";
+import { countries } from "../../constants/countries";
 
-interface UserState {
-  users: IUser[];
-  isLoading: boolean;
-  error: string;
-}
+
 
 const initialState: UserState = {
-  users: [
-  ],
-  isLoading: false,
-  error:''
+  users: [],
+  countries: countries,
 }
 
 
@@ -19,10 +14,13 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<IUser[]>) {
+    setUser(state, action: PayloadAction<IControllableForm[]>) {
       state.users = action.payload
     },
-  },
+    SetCountry(state, action: PayloadAction<string[]>) {
+      state.countries = action.payload
+    }
+  }
 })
 
 export default userSlice.reducer

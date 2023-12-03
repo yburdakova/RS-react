@@ -11,11 +11,10 @@ export interface IUser{
   accept?: boolean;
 }
 
-
 export interface IForm {
   name?: string;
   age?: number;
-  gender?: 'male' | 'female' | 'other';
+  gender?: 'maleGender' | 'femaleGender' | 'otherGender';
   country?: string;
   picture?: unknown | File;
   email?: string;
@@ -30,6 +29,11 @@ export interface IUncontrollableForm extends IForm {
 
 export interface IControllableForm extends IForm {
   picture: string;
+}
+
+export interface UserState {
+  users: IControllableForm[];
+  countries:string[];
 }
 
 export type FormFieldsTypes =

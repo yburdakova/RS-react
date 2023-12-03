@@ -10,3 +10,5 @@ export const convertImage = (file: File) => {
     reader.readAsDataURL(file);
   });
 };
+
+
